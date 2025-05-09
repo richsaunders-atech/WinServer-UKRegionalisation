@@ -52,18 +52,14 @@ Write-Output "Completed: Default input method set to English (United Kingdom)."
 
 # Copy settings to the default user profile
 Write-Output "Starting: Copying settings to the default user profile..."
-Copy-UserInternationalSettingsToSystem -WelcomeScreen $True -NewUser $True
+C:\temp\defaultuser.bat
+# Copy-UserInternationalSettingsToSystem -WelcomeScreen $True -NewUser $True
 Write-Output "Completed: Settings copied to the default user profile."
 
 # Set Time zone to GMT Standard Time
 Write-Output "Starting: Setting the time zone to GMT Standard Time..."
 Set-TimeZone -Id "GMT Standard Time"
 Write-Output "Completed: Time zone set to GMT Standard Time."
-
-# Pause for 60 seconds to allow the system to process the changes
-Write-Output "Pausing for 60 seconds to allow the system to process the changes..."
-Start-Sleep -Seconds 60
-Write-Output "Resuming after pause."
 
 # Look for any AppxPackages containing 'Microsoft.LanguageExperiencePacken-GB' and remove them
 Write-Output "Starting: Removing any AppxPackages containing 'Microsoft.LanguageExperiencePacken-GB'..."
