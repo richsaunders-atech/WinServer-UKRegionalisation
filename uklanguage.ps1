@@ -8,11 +8,19 @@ if (-not (Test-Path -Path "C:\temp")) {
 }
 Write-Host "Temp directory exists at C:\temp."
 
+# Set the progress preference to 'SilentlyContinue' to suppress progress messages (improve performance)
+$ProgressPreference = 'SilentlyContinue'
+
 # Download language pack from Microsoft
 Write-Output "Starting: Downloading the English (United Kingdom) language pack..."
-$ProgressPreference = 'SilentlyContinue'
 Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/p/?linkid=2195333 -OutFile C:\temp\lang.iso
 Write-Output "Completed: Language pack downloaded to C:\temp\lang.iso."
+
+# Download the defaultuser.bat file and associated en-GB.xml file
+Write-Output "Starting: Downloading defaultuser.bat and en-GB.xml..."
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/richsaunders-atech/WinServer-UKRegionalisation/refs/heads/main/defaultuser.bat -OutFile C:\temp\defaultuser.bat
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/richsaunders-atech/WinServer-UKRegionalisation/refs/heads/main/en-GB.xml -OutFile C:\temp\en-GB.xml
+Write-Output "Completed: defaultuser.bat and en-GB.xml downloaded."
 
 # Mount the ISO file and install the language pack
 Write-Output "Starting: Mounting the ISO file..."
