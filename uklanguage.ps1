@@ -77,6 +77,11 @@ Get-AppxPackage -Name '*Microsoft.LanguageExperiencePacken-GB*' | ForEach-Object
 }
 Write-Output "Completed: AppxPackages removed."
 
+# Unmount the ISO file
+Write-Output "Starting: Unmounting the ISO file..."
+Dismount-DiskImage -ImagePath "C:\temp\lang.iso"
+Write-Output "Completed: ISO file unmounted."
+
 # Restart the computer to apply the changes
 Write-Output "Restarting the computer to apply the changes..."
 Restart-Computer
