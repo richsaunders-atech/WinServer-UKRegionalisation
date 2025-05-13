@@ -88,6 +88,20 @@ try {
 }
 Write-Output "Completed: ISO file unmounted."
 
-# Restart the computer to apply the changes
+# Remove the downloaded files
+Write-Output "Starting: Removing downloaded files..."
+Remove-Item -Path "C:\temp\*" -Force
+Write-Output "Completed: Downloaded files removed."
+
+# Remove the mounted ISO
+Write-Output "Starting: Dismounting the ISO file..."
+Dismount-DiskImage -ImagePath "C:\temp\lang.iso" -ErrorAction SilentlyContinue
+Write-Output "Completed: ISO file dismounted."
+
+# Remove the temp directory
+Remove-Item -Path "C:\temp" -Recurse -Force
+Write-Output "Completed: Temp directory removed."
+
+# Optional: Restart the computer to apply the changes
 Write-Output "Restarting the computer to apply the changes..."
 Restart-Computer
