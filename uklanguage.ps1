@@ -101,7 +101,3 @@ Write-Output "Completed: ISO file dismounted."
 # Remove the temp directory
 Remove-Item -Path "C:\temp" -Recurse -Force
 Write-Output "Completed: Temp directory removed."
-
-# Optional: Restart the computer to apply the changes
-Write-Output "Restarting the computer to apply the changes..."
-Restart-Computer
